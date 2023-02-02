@@ -9,7 +9,7 @@ module.exports = {
   mode: mode,
   entry: "./src/index.js",
   output: {
-    filename: "index.js",
+    filename: "js/index.js",
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: 'images/[name][ext]',
     clean: true,
@@ -84,7 +84,7 @@ module.exports = {
       minify: false
     }),
     new MiniCssExtractPlugin({
-      filename: "style.css",
+      filename: "css/style.css",
     }),
   ],
 };
