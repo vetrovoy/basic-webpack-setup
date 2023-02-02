@@ -1,0 +1,8 @@
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+::placeholder {
+  color: 'grey';
+}
