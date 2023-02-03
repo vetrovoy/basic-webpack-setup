@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 const path = require("path");
 
@@ -11,7 +12,7 @@ module.exports = {
   output: {
     filename: "js/index.js",
     path: path.resolve(__dirname, "dist"),
-    assetModuleFilename: 'images/[name][ext]',
+    assetModuleFilename: "images/[name][ext]",
     clean: true,
   },
   devServer: {
@@ -27,7 +28,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          mode === 'production' ? MiniCssExtractPlugin.loader : "style-loader",
+          mode === "production" ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
           {
             loader: "postcss-loader",
@@ -37,10 +38,10 @@ module.exports = {
                   [
                     "postcss-preset-env",
                     {
-                      browsers: 'last 2 versions',
+                      browsers: "last 2 versions",
                     },
                     "autoprefixer",
-                    "postcss-simple-vars"
+                    "postcss-simple-vars",
                   ],
                 ],
               },
@@ -50,30 +51,66 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: 'images/[name][ext]'
-        }
+          filename: "images/[name][ext]",
+        },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: 'fonts/[name][ext]'
-        }
+          filename: "fonts/[name][ext]",
+        },
       },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
-      }
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
+      },
+    ],
+  },
+  optimization: {
+    minimizer: [
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            plugins: [
+              ["gifsicle", { interlaced: true }],
+              ["jpegtran", { progressive: true }],
+              ["optipng", { optimizationLevel: 5 }],
+              [
+                "svgo",
+                {
+                  plugins: [
+                    {
+                      name: "preset-default",
+                      params: {
+                        overrides: {
+                          removeViewBox: false,
+                          addAttributesToSVGElement: {
+                            params: {
+                              attributes: [
+                                { xmlns: "http://www.w3.org/2000/svg" },
+                              ],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+      }),
     ],
   },
   plugins: [
@@ -81,7 +118,7 @@ module.exports = {
       title: "Webpack Test",
       filename: "index.html",
       template: "src/index.html",
-      minify: false
+      minify: false,
     }),
     new MiniCssExtractPlugin({
       filename: "css/style.css",
