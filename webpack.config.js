@@ -23,6 +23,7 @@ module.exports = {
     compress: true,
     port: 9000,
   },
+  devtool: mode === "development" ? "source-map" : false,
   module: {
     rules: [
       {
