@@ -35,11 +35,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(s[ac]ss||css)$/i,
+        test: /\.s[ac]ss$/i,
         use: [
           mode === "production" ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
-          isSass === "sass" ? "sass-loader" : "postcss-loader",
+          "sass-loader",
         ],
       },
       {

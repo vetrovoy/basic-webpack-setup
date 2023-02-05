@@ -1,4 +1,4 @@
-import '../style/fonts.css'
-import '../style/index.css'
+import '../style/fonts.scss'
+import '../style/index.scss'
 
 console.log('index');
