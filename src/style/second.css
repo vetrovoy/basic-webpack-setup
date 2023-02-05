@@ -1,10 +1,8 @@
-$base-color: #c6538c;
-
 .content {
   width: 80%;
   margin: 0 auto;
   text-align: center;
-  background-color: $base-color;
+  background-color: grey;
 }
 
 .content img {

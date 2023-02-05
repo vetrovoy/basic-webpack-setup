@@ -1,3 +1,3 @@
-import '../style/second.scss'
+import '../style/second.css'
 
 console.log('second');

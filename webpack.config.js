@@ -6,8 +6,8 @@ const path = require("path");
 
 const mode = process.env.NODE_ENV;
 
-const projectPath = path.resolve(__dirname, "src")
-const distPath = path.resolve(__dirname, "dist")
+const projectPath = path.resolve(__dirname, "src");
+const distPath = path.resolve(__dirname, "dist");
 
 module.exports = {
   mode: mode,
@@ -34,11 +34,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(s[ac]ss||css)$/i,
+        test: /\.css$/i,
         use: [
           mode === "production" ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
-          "sass-loader",
+          "postcss-loader",
         ],
       },
       {
