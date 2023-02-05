@@ -7,8 +7,6 @@ const path = require("path");
 const mode = process.env.NODE_ENV;
 const isSass = process.env.CSS;
 
-console.log('isSass', isSass);
-
 const projectPath = path.resolve(__dirname, "src")
 const distPath = path.resolve(__dirname, "dist")
 
