@@ -114,9 +114,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --open --config webpack.config.js",
-    "start-sass": "cross-env NODE_ENV=development CSS=sass webpack serve --open --config webpack.config.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "build-sass": "cross-env NODE_ENV=production CSS=sass webpack --config webpack.config.js"
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",

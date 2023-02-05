@@ -5,7 +5,6 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const path = require("path");
 
 const mode = process.env.NODE_ENV;
-const isSass = process.env.CSS;
 
 const projectPath = path.resolve(__dirname, "src")
 const distPath = path.resolve(__dirname, "dist")
@@ -39,7 +38,7 @@ module.exports = {
         use: [
           mode === "production" ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
-          isSass === "sass" ? "sass-loader" : "postcss-loader",
+          "sass-loader",
         ],
       },
       {
