@@ -6,18 +6,24 @@ const path = require("path");
 
 const mode = process.env.NODE_ENV;
 
+const projectPath = path.resolve(__dirname, "src")
+const distPath = path.resolve(__dirname, "dist")
+
 module.exports = {
   mode: mode,
-  entry: "./src/index.js",
+  entry: {
+    index: `${projectPath}/js/index.js`,
+    second: `${projectPath}/js/second.js`,
+  },
   output: {
-    filename: "js/index.js",
-    path: path.resolve(__dirname, "dist"),
+    path: distPath,
+    filename: "js/[name].js",
     assetModuleFilename: "images/[name][ext]",
     clean: true,
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: distPath,
     },
     hot: false,
     liveReload: true,
@@ -123,7 +129,7 @@ module.exports = {
       minify: false,
     }),
     new MiniCssExtractPlugin({
-      filename: "css/style.css",
+      filename: "css/[name].css",
     }),
   ],
 };
