@@ -38,23 +38,7 @@ module.exports = {
         use: [
           mode === "production" ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-preset-env",
-                    {
-                      browsers: "last 2 versions",
-                    },
-                    "autoprefixer",
-                    "postcss-simple-vars",
-                  ],
-                ],
-              },
-            },
-          },
+          "postcss-loader",
         ],
       },
       {
