@@ -1,4 +1,7 @@
-import '../style/fonts.css'
-import '../style/index.css'
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App.js";
+import "../style/fonts.css";
+import "../style/index.css";
 
-console.log('index');
+ReactDOM.render(<App />, document.getElementById("root"));

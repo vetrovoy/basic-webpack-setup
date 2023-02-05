@@ -13,7 +13,6 @@ module.exports = {
   mode: mode,
   entry: {
     index: `${projectPath}/js/index.js`,
-    second: `${projectPath}/js/second.js`,
   },
   output: {
     path: distPath,
@@ -56,17 +55,14 @@ module.exports = {
         },
       },
       {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [["@babel/preset-env", { targets: "defaults" }]],
-          },
-        },
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: "babel-loader",
+        options: { presets: ["@babel/env"] },
       },
     ],
   },
+  resolve: { extensions: ["*", ".js", ".jsx"] },
   optimization: {
     minimizer: [
       new ImageMinimizerPlugin({
