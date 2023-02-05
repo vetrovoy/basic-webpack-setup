@@ -12,6 +12,7 @@ const distPath = path.resolve(__dirname, "dist");
 module.exports = {
   mode: mode,
   entry: {
+    bootstrap: `${projectPath}/js/bootstrap.js`,
     index: `${projectPath}/js/index.js`,
     second: `${projectPath}/js/second.js`,
   },
